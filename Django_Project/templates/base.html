@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Django</title>
+    {% include "snippets/styles.html" %}
+    {% block app_css %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    {% endblock app_css %}
+</head>
+
+<body>
+    {% include "snippets/navbar.html"%}
+    <div class="p-5 mb-4 jmbt">
+        <div class="container py-5 text-white text-center">
+            {% block header %}{% endblock header %}
+        </div>
+    </div>
+    <div class="container-fluid">
+        <section id="myBody" class="container text-dark bg-white shadow" style="margin-top: -100px;">
+            {% block content %}{% endblock content %}
+        </section>
+        <section class="container bg-dark text-white shadow">
+            {% block content_2 %}{% endblock content_2 %}
+        </section>
+    </div>
+    {% include "snippets/scripts.html" %}
+    <script src="{% static "js/scrollBar.js" %}"></script>
+</body>
+
+</html>

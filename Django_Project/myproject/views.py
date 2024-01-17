@@ -6,6 +6,7 @@ from django.shortcuts import render
 
 def index(request):
     context = {
+        'title' : 'App Django Here',
         'nav': [
             ['/', 'Home'],
             ['/blog', 'Blog'],

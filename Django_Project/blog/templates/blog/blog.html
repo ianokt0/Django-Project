@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static "vendor/bootstrap/css/bootstrap.css" %}">
+    <link rel="stylesheet" href="{% static "blog/css/styles.css" %}">
+</head>
+
+<body>
+    <main>
+        <section class="container">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand text-success fw-bold" href="/">Django Project</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            {% for link,name in nav %}
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-outline-success me-2" aria-current="page" href="{{ link }}">{{ name }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+            <div class="row">
+                <img id="banner" src="{% static banner %}" alt="">
+                <div class="col-12 mb-5">
+                    <h1>{{ title }}!</h1>
+                    <p>{{ subtitle }}</p>
+                    <div class="mt-5">
+                        <span class="fw-bold">Author : <i>{{ author }}</i></span>
+                        <p>
+                            <span class="text-success fw-bold">{{ title }}</span> here dolor sit amet consectetur adipisicing
+                            elit. Atque labore eligendi fugit illo iusto
+                            amet vero fugiat temporibus earum unde, cupiditate dolor voluptates mollitia dolorem totam
+                            explicabo laborum optio ipsam dolore quod placeat praesentium? Aspernatur, sapiente, autem, amet
+                            saepe nesciunt fugit laboriosam animi possimus labore perspiciatis est fugiat eligendi
+                            cupiditate.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <p class="fw-bold">Artikel Lainnya</p>
+                    {% for link,name in sub_link %}
+                        <a href="{{ link }}" class="btn btn-outline-success text-uppercase m-1">#{{ name }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="{% static "vendor/bootstrap/js/jquery.js" %}"></script>
+    <script src="{% static "vendor/bootstrap/js/bootstrap.js" %}"></script>
+    <script src="{% static "vendor/bootstrap/js/pooper.js" %}"></script>
+</body>
+
+</html>
