@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block app_css %}
+  <link rel="stylesheet" href="{% static 'blog/css/styles.css' %}" />
+{% endblock %}
+
+{% block header %}
+  <h1 class="text-start" style="margin-top: 100px;">{{ title }}</h1>
+  <p class="text-start">{{ subtitle }}</p>
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12 p-4">
+      <h3>{{ post.title }}</h3>
+      <p>{{ post.body }}</p>
+      <a href="{% url 'blog.category' blog_category=post.category %}"><span class="badge text-bg-primary">#{{ post.category }}</span></a>
+      <a href="#"><span class="badge text-bg-secondary">{{ post.author }}</span></a>
+      <span>{{ post.date }}</span>
+      <hr class="border border-secondary border-2 opacity-50 rounded mb-1" />
+    </div>
+  </div>
+  {% comment %} 14:20 {% endcomment %}
+{% endblock %}

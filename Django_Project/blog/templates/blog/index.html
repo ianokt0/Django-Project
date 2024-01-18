@@ -12,10 +12,16 @@
 {% endblock %}
 
 {% block content %}
-  <div class="row" style="height: 400px;">
-    <div class="col-12">
-      <h1>Blog Site</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex facere iusto doloremque numquam culpa alias velit atque laboriosam, quis minus at consequatur similique omnis laudantium aut, quidem est nulla? Quis repudiandae fugiat ea, corporis nesciunt deleniti libero et voluptates doloremque iure blanditiis accusantium laboriosam assumenda est enim numquam. Sequi, exercitationem.</p>
+  {% for post in Posts %}
+    <div class="row">
+      <div class="col-12 p-4">
+        <h3><a class="text-decoration-none text-dark" href="{% url 'post.detail' slugInput=post.slug %}">{{ post.title }}</a></h3>
+        <p>{{ post.body }}</p>
+        <a href="{% url 'blog.category' blog_category=post.category %}"><span class="badge text-bg-primary">#{{ post.category }}</span></a>
+        <a href="#"><span class="badge text-bg-secondary">{{ post.author }}</span></a>
+        <span>{{ post.date }}</span>
+        <hr class="border border-secondary border-2 opacity-50 rounded mb-1" />
+      </div>
     </div>
-  </div>
+  {% endfor %}
 {% endblock %}
